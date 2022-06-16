@@ -1,0 +1,51 @@
+<html>
+  <body>
+    <div id="container">
+      <h2>Person's Form</h2>
+      <form id="person-form">
+        <button type="submit">Submit</button>
+        <br>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+  // Code here
+  const form = document.querySelector('#person-form');
+
+  function initForm(e) {
+    const firstNameLabel = document.createElement('label');firstNameLabel.textContent = 'First Name: ';
+    const lastNameLabel = document.createElement('label');
+    lastNameLabel.textContent = 'Last Name: ';
+    const ageLabel = document.createElement('label');
+    ageLabel.textContent = 'Age: ';
+    const firstNameInput = document.createElement('input');
+    const lastNameInput = document.createElement('input');
+    const ageInput = document.createElement('input');
+    firstNameInput.className = 'first-name';
+    lastNameInput.className = 'last-name';
+    ageInput.className = 'age';
+    ageInput.type = 'number';
+    form.append(firstNameLabel, firstNameInput, lastNameLabel, lastNameInput, ageLabel, ageInput);
+    e.preventDefault();
+  }
+
+  function submitPersonForm(e) {
+    const firstName = document.querySelector('.first-name').value;
+    const lastName = document.querySelector('.last-name').value;
+    const age = document.querySelector('.age').value;
+
+    const person = {
+      firstName: firstName,
+      lastName: lastName,
+      age : age
+    };
+
+    console.log(person);
+    e.preventDefault();
+  }
+
+  window.addEventListener('load', initForm)
+  const button = document.querySelector('button[type="submit"]').addEventListener('click', submitPersonForm);
+</script>
